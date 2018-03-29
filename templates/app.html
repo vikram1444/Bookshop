@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style>
+    
+.container{
+    height:670px ;
+}
+.fle{
+    display: flex;
+}
+.page_title{
+    width: 500px;
+    margin-left:200px;
+    margin-bottom:50px;  
+}
+.second_box{
+    margin-left:30px;
+}
+.book_title{
+  height:50px ;
+}
+.description{
+    height:50px ;
+}
+.but{
+    margin-left:20px; 
+}
+.imag{
+    width: 230px;
+    height: 400px;
+}
+.four_box{
+    height:400px;
+     
+}
+
+.second_box{
+    height:600px ;
+}
+.description{
+    height: 300px;
+    width: 500px;
+    margin-bottom:200px; 
+}
+
+
+    
+
+
+        </style>
+</head>
+<body>
+        
+        <div class="container">   
+            <div class="row">
+                 <div class="col-md-12 page_title">Problem solving Books</div>
+                 <div class="row">
+                    
+                    <p class="status col-md-1" >CartItems:</p>
+                    <p class="itemtotal col-md-1">0</p>
+                 </div>
+                 
+                 
+                 
+                 <div class="col-md-11 fle second_box">
+                     <div class="col-md-6 first_half">
+                                   
+                                  <img  class="imag col-md-6 " src="C:\Users\Vikram\Pictures\MEmu Photo\logo.png">
+                                  <div class="col-md-6 four_box"> <p class="author">hello</p>
+                                    <p class="price">bolo</p>
+                                    <p class="publisher">chalo</p>
+                                    <p class="year">galo</p></div>
+                                 
+                                
+                                  <div class="but col-md-10">
+                                      <button class="Previous">Previous</button>
+                                      <button class="Next">Next</button>
+                                      <button class="add">addTocart</button>
+                                  </div>
+                                  <p class="email col-md-8">
+                                    
+                                    Web page Developed by: Vikram<br></br>
+                                  Email:vikramthota09@gmail.com
+                                </p>   
+                     </div>
+                     <div class="col-md-6 second_half">
+                            <div class="row book_title">Book</div>
+                            <div class="row description">chalk</div>
+                            <a class="row book_link" target="_blank">link</a>
+                     </div>
+                 </div>
+                 <button type="button"  class="checkout submit-button" >Checkout</button>
+            </div>
+                  
+        </div>
+        <script>
+            var x;
+             function loadDoc() {
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                obj = this.responseText;
+                var xx=JSON.parse(obj);
+                x=xx;      
+            }
+        };
+        xhttp.open("GET", "http://localhost:5000/return-files/", false);
+        xhttp.send();
+    }
+    loadDoc();
+var title=['hi','hi','hi','hi','hi','hi','hi','hi','hi','hi'];            
+var count=[0,0,0,0,0,0,0,0,0,0];
+var price=[0,0,0,0,0,0,0,0,0,0];
+var iii;
+for (iii = 0; iii < x.items.length; iii++) {
+    title[iii]=x.items[iii].volumeInfo.title;
+        try{
+
+            price[iii]=x.items[iii].saleInfo.retailPrice.amount;
+            }
+        catch(err){
+             price[iii]=0;
+         }
+    
+}
+var bu=document.querySelector('.Previous');
+var nu=document.querySelector('.Next');
+var ad=document.querySelector('.add');
+var tot=document.querySelector('.itemtotal');
+var i=0;
+var total=0;
+        var xy=document.querySelector('.imag');
+        xy.src=x.items[0].volumeInfo.imageLinks.thumbnail;
+         xy=document.querySelector('.author');
+        xy.innerHTML=x.items[0].volumeInfo.authors[0];
+         xy=document.querySelector('.price');
+        xy.innerHTML=x.items[0].saleInfo.retailPrice.amount;
+         xy=document.querySelector('.publisher');
+        xy.innerHTML=x.items[0].volumeInfo.publisher;
+         xy=document.querySelector('.year');
+        xy.innerHTML=x.items[0].volumeInfo.publishedDate;
+         xy=document.querySelector('.book_title');
+        xy.innerHTML=x.items[0].volumeInfo.title;
+         xy=document.querySelector('.description');
+        xy.innerHTML=x.items[0].volumeInfo.description;
+         xy=document.querySelector('.book_link');
+        xy.href=x.items[0].volumeInfo.previewLink;  
+bu.addEventListener('click',function clicking() {
+    if(i==0){
+        try{
+            ad.style.display="block";
+var hee=x.items[i].saleInfo.retailPrice.amount}
+catch(err){
+         ad.style.display="none";
+         }
+    }else{
+        i--;
+        try{
+            ad.style.display="block";
+var hee=x.items[i].saleInfo.retailPrice.amount}
+catch(err){
+         ad.style.display="none";
+         }
+        var xx=document.querySelector('.imag');
+        xx.src=x.items[i].volumeInfo.imageLinks.thumbnail;
+          xx=document.querySelector('.author');
+          try{
+            xx.innerHTML=x.items[i].volumeInfo.authors[0];
+        }catch(err){  
+        
+        xx.innerHTML="Not available";}
+     
+         xx=document.querySelector('.price');
+         try{
+            xx.innerHTML=x.items[i].saleInfo.retailPrice.amount;
+        }catch(err){     
+            xx.innerHTML="Not available";      
+       }
+         xx=document.querySelector('.publisher');
+         try{
+            xx.innerHTML=x.items[i].volumeInfo.publisher;
+        }catch(err){  
+            xx.innerHTML="Not available";
+        }
+         xx=document.querySelector('.year');
+         try{
+            xx.innerHTML=x.items[i].volumeInfo.publishedDate;
+        }catch(err){  
+            xx.innerHTML="Not available"; 
+       }
+         xx=document.querySelector('.book_title');
+         try{
+            xx.innerHTML=x.items[i].volumeInfo.title;
+        }catch(err){ 
+            xx.innerHTML="Not available";   
+        }
+         xx=document.querySelector('.description');
+         try{
+            xx.innerHTML=x.items[i].volumeInfo.description;
+        }catch(err){ 
+            xx.innerHTML="Not available";
+        }
+         xx=document.querySelector('.book_link');
+         try{
+            xx.href=x.items[i].volumeInfo.previewLink;
+        }catch(err){  
+            xx.href="";}
+    }
+});
+nu.addEventListener('click',function clicking() {
+    if(i==x.items.length-1){
+        try{
+            ad.style.display="block";
+var hee=x.items[i].saleInfo.retailPrice.amount}
+catch(err){
+         ad.style.display="none";
+         }
+    }else{
+        i++;
+        try{
+            ad.style.display="block";
+var hee=x.items[i].saleInfo.retailPrice.amount}
+catch(err){
+         ad.style.display="none";
+         }
+        var xx=document.querySelector('.imag');
+        xx.src=x.items[i].volumeInfo.imageLinks.thumbnail;
+          xx=document.querySelector('.author');
+          try{
+            xx.innerHTML=x.items[i].volumeInfo.authors[0];
+        }catch(err){  
+        
+        xx.innerHTML="Not available";}
+     
+         xx=document.querySelector('.price');
+         try{
+            xx.innerHTML=x.items[i].saleInfo.retailPrice.amount;
+        }catch(err){     
+            xx.innerHTML="Not available";      
+       }
+         xx=document.querySelector('.publisher');
+         try{
+            xx.innerHTML=x.items[i].volumeInfo.publisher;
+        }catch(err){  
+            xx.innerHTML="Not available";
+        }
+         xx=document.querySelector('.year');
+         try{
+            xx.innerHTML=x.items[i].volumeInfo.publishedDate;
+        }catch(err){  
+            xx.innerHTML="Not available"; 
+       }
+         xx=document.querySelector('.book_title');
+         try{
+            xx.innerHTML=x.items[i].volumeInfo.title;
+        }catch(err){ 
+            xx.innerHTML="Not available";   
+        }
+         xx=document.querySelector('.description');
+         try{
+            xx.innerHTML=x.items[i].volumeInfo.description;
+        }catch(err){ 
+            xx.innerHTML="Not available";
+        }
+         xx=document.querySelector('.book_link');
+         try{
+            xx.href=x.items[i].volumeInfo.previewLink;
+        }catch(err){  
+            xx.href="";}
+    }
+});       
+ad.addEventListener('click',function clic() {
+    if(count[i]>2){       
+    }else{
+        count[i]++;
+        total++;
+        
+        tot.innerHTML=total;
+    }
+});
+var fg=document.querySelector('.checkout');
+fg.addEventListener('click',function clicking() {
+    var obj = {
+        "counts":[count[0],
+        count[1],
+        count[2],
+        count[3],
+        count[4],count[5]
+        ,count[6],count[7]
+        ,count[8]
+        ,count[9]],
+        "prices":[price[0],price[1],price[2],price[3],price[4],price[5],price[6],price[7],
+        price[7],price[8],price[9]],
+        "titles":[title[0],title[1],title[2],title[3],title[4],title[5],title[6],title[7],
+        title[8],title[9]]
+    };
+    $.ajax({
+          type: "POST",
+          contentType: "application/json;charset=utf-8",
+          url: "http://localhost:5000/your/flask/endpoint",
+          traditional: "true",
+          data: JSON.stringify(obj),
+          dataType: "json"
+          });
+          setTimeout(function () {
+          location.href = "http://localhost:5000/checkout"; 
+        }, 2000);  
+});
+        </script>
+</body>
+</html>            

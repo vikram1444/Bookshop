@@ -1,0 +1,82 @@
+<html>
+ <body>
+     <h1>Your orders</h1>
+  {% for jj in sp %}
+     <h1>order id:{{jj.id}}</h1>
+     {% if jj.book_1 >0 %}
+     <h2>item details </h2>
+     <h3>Book Name: {{title[0]}}</h3>
+     <h3>quantity: {{jj.book_1}}</h3>
+     <h3>price: {{price[0]}}</h3>
+     {% else %}
+     {% endif %}
+     {% if jj.book_2 >0 %}
+     <h2>item details </h2>
+     <h3>Book Name: {{title[1]}}</h3>
+     <h3>quantity: {{jj.book_2}}</h3>
+     <h3>price: {{price[1]}}</h3>
+     {% else %}
+     {% endif %}
+     {% if jj.book_3 >0 %}
+     <h2>item details </h2>
+     <h3>Book Name: {{title[2]}}</h3>
+     <h3>quantity: {{jj.book_3}}</h3>
+     <h3>price: {{price[2]}}</h3>
+     {% else %}
+     {% endif %}
+     {% if jj.book_4 >0 %}
+     <h2>item details </h2>
+     <h3>Book Name: {{title[3]}}</h3>
+     <h3>quantity: {{jj.book_4}}</h3>
+     <h3>price: {{price[3]}}</h3>
+     {% else %}
+     {% endif %}
+     {% if jj.book_5 >0 %}
+     <h2>item details </h2>
+     <h3>Book Name: {{title[4]}}</h3>
+     <h3>quantity: {{jj.book_5}}</h3>
+     <h3>price: {{price[4]}}</h3>
+     {% else %}
+     {% endif %}
+     {% if jj.book_6 >0 %}
+     <h2>item details </h2>
+     <h3>Book Name: {{title[5]}}</h3>
+     <h3>quantity: {{jj.book_6}}</h3>
+     <h3>price: {{price[5]}}</h3>
+     {% else %}
+     {% endif %}
+     {% if jj.book_7 >0 %}
+     <h2>item details </h2>
+     <h3>Book Name: {{title[6]}}</h3>
+     <h3>quantity: {{jj.book_7}}</h3>
+     <h3>price: {{price[6]}}</h3>
+     {% else %}
+     {% endif %}
+     {% if jj.book_8 >0 %}
+     <h2>item details </h2>
+     <h3>Book Name: {{title[7]}}</h3>
+     <h3>quantity: {{jj.book_8}}</h3>
+     <h3>price: {{price[7]}}</h3>
+     {% else %}
+     {% endif %}
+     {% if jj.book_9 >0 %}
+     <h2>item details </h2>
+     <h3>Book Name: {{title[8]}}</h3>
+     <h3>quantity: {{jj.book_9}}</h3>
+     <h3>price: {{price[8]}}</h3>
+     {% else %}
+     {% endif %}
+     {% if jj.book_10 >0 %}
+     <h2>item details </h2>
+     <h3>Book Name: {{title[9]}}</h3>
+     <h3>quantity: {{jj.book_10}}</h3>
+     <h3>price: {{price[9]}}</h3>
+     {% else %}
+     {% endif %}
+     <h1>Total Amount</h1>
+     <h2>________________________</h2>
+     <h3>{{jj.total}}</h3>
+  {% endfor %}   
+  
+ </body>   
+</html>
